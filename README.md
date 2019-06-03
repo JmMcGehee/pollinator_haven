@@ -24,11 +24,11 @@ Will require two models. Gardens and garden contents
 ![Wire Frame 1](./Images/home.png)
 ![Wire Frame 2](./Images/my_garden.png)
 
-### Local Device Developer Dependency Installations:
+### Local Device Dependency Installations:
 1. `npm init`
 2. `npm i express`
 3. `npm i ejs`
 4. `npm i method-override`
 5. `npm i mongoose`
-6. `npm i express-session`ß
+6. `npm i express-session`
 7. `npm i bcrypt`

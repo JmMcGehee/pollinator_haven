@@ -14,6 +14,8 @@ const speciesController = require('./controllers/species'); //require speciesCon
 app.use(express.static('public'));
 app.use('/species', speciesController); //point the species route to the controller
 
+//MAKE SURE TO REQUIRE JSON
+
 // =======================
 // INDEX ROUTE
 // =======================

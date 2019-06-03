@@ -35,3 +35,8 @@ Will require two models. Gardens and garden contents
 8. `npm i bootstrap`
 9. `npm i jquery`
 10. `npm i popper.js`
+
+## Structure:
+- The My Garden page is an index view of species.
+- The Home page is an index view of all gardens and species/sightings.
+- Species and sightings are created through the same model. 

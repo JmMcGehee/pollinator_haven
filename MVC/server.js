@@ -6,11 +6,13 @@
 
 const express = require('express');
 const app = express();
+const speciesController = require('./controllers/species'); //require speciesController
 
 // =======================
 // MIDDLEWARE
 // =======================
 app.use(express.static('public'));
+app.use('/species', speciesController); //point the species route to the controller
 
 // =======================
 // INDEX ROUTE

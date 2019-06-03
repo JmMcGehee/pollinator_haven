@@ -24,7 +24,7 @@ Will require two models. Gardens and garden contents
 ![Wire Frame 1](./Images/home.png)
 ![Wire Frame 2](./Images/my_garden.png)
 
-### Local Device Dependency Installations:
+### Developer Environment Installations:
 1. `npm init`
 2. `npm i express`
 3. `npm i ejs`
@@ -32,3 +32,6 @@ Will require two models. Gardens and garden contents
 5. `npm i mongoose`
 6. `npm i express-session`
 7. `npm i bcrypt`
+8. `npm i bootstrap`
+9. `npm i jquery`
+10. `npm i popper.js`

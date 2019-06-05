@@ -5,7 +5,9 @@ const sightingSchema = Schema({
   sightingTitle: String,
   species: String,
   otherSightings: [{type: Date}],
-  image: String,
+  // image: String,
+  image:
+      { data: Buffer, contentType: String }, // Should this just be a string? 
   location: {
     latitude: {type: Number},
     longitude: {type: Number}

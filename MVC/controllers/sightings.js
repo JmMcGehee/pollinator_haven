@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Sighting = require('../models/sighting');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + file.originalname)
+  }
+});
+
+const upload = multer({storage: storage});// Can add limits to file size here.
 
 // =======================
 // 1.INDEX ROUTE
@@ -37,10 +49,13 @@ router.get('/:id', (req,res) => {
 // 5.POST/CREATE ROUTE
 // =======================
 
-// router.post('/', (req,res) => {
-//   // res.send(req.body);
-//   Sighting.create
-// })
+router.post('/', upload.single('image'), (req,res) => {
+  res.send(req.file);
+  console.log(req.file);
+  image: req.file.path // OR should this be req.body.image: req.file.path?
+  res.send(req.body);//
+  // Sighting.create
+})
 
 // =======================
 // 6.UPDATE/PUT ROUTE

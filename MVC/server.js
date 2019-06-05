@@ -6,13 +6,25 @@
 
 const express = require('express');
 const app = express();
-const speciesController = require('./controllers/species'); //require speciesController
+const mongoose = require('mongoose');
+const sightingsController = require('./controllers/sightings'); //require speciesController
+
+// =======================
+// MONGOOSE CONFIGURATION
+// =======================
+
+mongoose.connect('mongodb://localhost:27017/pollinator_haven', { useNewUrlParser: true });
+mongoose.connection.once('open', () => {
+  console.log('Connected to mongo');
+})
 
 // =======================
 // MIDDLEWARE
 // =======================
 app.use(express.static('public'));
-app.use('/species', speciesController); //point the species route to the controller
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use('/sightings', sightingsController); //point the species route to the controller
 
 //MAKE SURE TO REQUIRE JSON
 

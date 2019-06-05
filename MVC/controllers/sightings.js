@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const Sighting = require('../models/sighting');
 
 // =======================
 // 1.INDEX ROUTE
 // =======================
 router.get('/', (req,res) => {
-  res.render('./species/index.ejs')
+  res.render('./sightings/index.ejs')
 })
 
 // =======================
@@ -13,7 +14,7 @@ router.get('/', (req,res) => {
 // =======================
 
 router.get('/new', (req,res) => {
-  res.send('making new...')
+  res.render('./sightings/new.ejs')
 })
 
 // =======================
@@ -29,16 +30,17 @@ router.get('/:id/edit', (req,res) => {
 // =======================
 
 router.get('/:id', (req,res) => {
-  res.send(${req.params.id})
+  res.send(req.params.id)
 })
 
 // =======================
 // 5.POST/CREATE ROUTE
 // =======================
 
-router.post('/', (req,res) => {
-  res.send(req.body);
-})
+// router.post('/', (req,res) => {
+//   // res.send(req.body);
+//   Sighting.create
+// })
 
 // =======================
 // 6.UPDATE/PUT ROUTE
@@ -58,4 +60,4 @@ router.delete('/:id', (req,res) => {
 
 module.exports = router;
 
-//Set up species controller
+//Set up sightings controller

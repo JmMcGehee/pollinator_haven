@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Species New View</title>
+    <% include ../../partials/head.ejs %>
+  </head>
+  <body>
+    <h1>Add to Your Garden</h1>
+    <form class="form-group" action='/sightings' method="POST">
+      <input type="text" name="sightingTitle" placeholder="Title"><br>
+      <input type="text" name="species" placeholder="Species"><br>
+      <input type="url" name="image" placeholder="Image link"><br>
+      Location: <input type="number" name="location.latitude" placeholder="latitude">
+      <input type="number" name="location.longitude" placeholder="longitude"><br>
+      <!-- structure needs to change to match schema-->
+
+      In Season from:
+      <input type="date" name="season.startDate">
+      <!-- structure needs to change to match schema -->
+      to <input type="date" name="season.endDate"><br>
+
+      Notes:<br>
+      <textarea name="notes" rows="8" cols="80"></textarea><br>
+
+      <input type="submit" value="Add">
+
+    </form>
+  </body>
+</html>

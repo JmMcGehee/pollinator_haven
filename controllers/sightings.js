@@ -48,16 +48,43 @@ router.get('/:id', (req,res) => {
 })
 
 // =======================
-// 5.POST/CREATE ROUTE
+// 5.POST/CREATE ROUTE req.body
 // =======================
 
-router.post('/', upload.single('image'), (req,res) => {
-  res.send(req.file);
-  console.log(req.file);
-  image: req.file.path // OR should this be req.body.image: req.file.path?
-  res.send(req.body);//
-  // Sighting.create
+router.post('/', (req,res) => {
+  // res.send(req.body)
+  let newSighting = {
+    sightingTitle: req.body.sightingTitle,
+    species: req.body.species,
+    image: req.body.image,
+    location: {
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    },
+    season: {
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
+    },
+    notes: req.body.notes
+  };
+  // console.log(newSighting);
+  Sighting.create(newSighting, (err, createdSighting) => {
+    console.log(createdSighting);
+    res.redirect('/sightings');
+  })
 })
+
+// =======================
+// 5.1 POST/CREATE ROUTE req.file
+// =======================
+
+// router.post('/', upload.single('image'), (req,res) => {
+//   res.send(req.file);
+//   console.log(req.file);
+//   image: req.file.path // OR should this be req.body.image: req.file.path?
+//   res.send(req.body);//
+//   // Sighting.create
+// })
 
 // =======================
 // 6.UPDATE/PUT ROUTE

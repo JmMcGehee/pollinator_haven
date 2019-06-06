@@ -5,8 +5,7 @@ const sightingSchema = Schema({
   sightingTitle: String,
   species: String,
   otherSightings: [{type: Date}],
-  // image: String,
-  image: String, 
+  image: String,
   location: {
     latitude: {type: Number},
     longitude: {type: Number}

@@ -10,18 +10,19 @@
   </head>
   <body>
     <h1>Add to Your Garden</h1>
-    <form class="form-group" action='/sightings' method="POST" enctype="multipart/form-data">
+    <!-- add later:  enctype="multipart/form-data" -->
+    <form class="form-group" action='/sightings' method="POST" >
       Title: <input type="text" name="sightingTitle" placeholder="Title"><br>
       Species: <input type="text" name="species" placeholder="Species"><br>
       Upload Image: <input type="file" name="image"><br>
-      Location: <input type="number" name="location.latitude" placeholder="latitude">
-      <input type="number" name="location.longitude" placeholder="longitude"><br>
+      Location: <input type="number" name="latitude" placeholder="latitude">
+      <input type="number" name="longitude" placeholder="longitude"><br>
       <!-- structure needs to change to match schema-->
 
       In Season from:
-      <input type="date" name="season.startDate">
+      <input type="date" name="startDate">
       <!-- structure needs to change to match schema -->
-      to <input type="date" name="season.endDate"><br>
+      to <input type="date" name="endDate"><br>
 
       Notes:<br>
       <textarea name="notes" rows="8" cols="80"></textarea><br>

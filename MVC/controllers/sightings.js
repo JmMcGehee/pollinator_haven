@@ -14,6 +14,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});// Can add limits to file size here.
 
+router.use(express.static('public'));
+
 // =======================
 // 1.INDEX ROUTE
 // =======================

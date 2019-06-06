@@ -39,6 +39,7 @@ Will require two models. Gardens and garden contents
 
 ## Uploading Images
 
+TUTORIAL: https://www.youtube.com/watch?v=srPXMt1Q0nY
 
 1. Install `multer` to parse form data bodies (for `type=file`).
 * `npm i multer`
@@ -76,7 +77,7 @@ const upload = multer({storage: storage});
 ```
 5. Edit model to store image info in mongoDB.
 6. Set the object image to the path of the image.
-7. Make uploads publicly available. 
+7. Make uploads publicly available.
 
 ## Structure:
 - The My Garden page is an index view of species.

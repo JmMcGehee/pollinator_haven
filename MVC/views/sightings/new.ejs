@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Species New View</title>
     <% include ../../partials/head.ejs %>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3-dRwU-380T2MF5h331zf8tltwcDIQiA&callback=initMap">
+    </script>
   </head>
   <body>
     <h1>Add to Your Garden</h1>
@@ -26,5 +29,8 @@
       <input type="submit" value="Add">
 
     </form>
+    <div class="" id="map" style="height: 400px;width: 400px;">
+
+    </div>
   </body>
 </html>

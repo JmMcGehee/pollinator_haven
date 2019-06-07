@@ -8,8 +8,23 @@
   <body>
     <div class="container-fluid">
       <h1 class="col-sm">This is your garden</h1>
+      <nav class="">
+        <a href='/sightings/new'>Log a new Sighting or Species</a>
+      </nav>
     </div>
-    <a href='/sightings/new'>Log a new Sigthing or Species</a>
+    <div class="container">
+        <% for (let i = 0; i < sightings.length; i++) { %>
+          <div class="card">
+          <a href="/sightings/<%= sightings[i].id %>"><h3><%= sightings[i].species %></h3></a>
+          <img src="#" alt="<%= sightings[i].image %>">
+          <h5><%= sightings[i].sightingTitle %></h5>
+          Date: <br>
+          Location <br>
+          <h6>Notes:</h6>
+          <p><%= sightings[i].notes %></p>
+      <% } %>
+      </div>
+    </div>
   </body>
 </html>
 

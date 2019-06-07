@@ -20,7 +20,11 @@ router.use(express.static('public'));
 // 1.INDEX ROUTE
 // =======================
 router.get('/', (req,res) => {
-  res.render('./sightings/index.ejs')
+  Sighting.find({}, (error, allSightings) => {
+    res.render('./sightings/index.ejs', {
+      sightings: allSightings
+    })
+  })
 })
 
 // =======================
@@ -44,7 +48,11 @@ router.get('/:id/edit', (req,res) => {
 // =======================
 
 router.get('/:id', (req,res) => {
-  res.send(req.params.id)
+  Sighting.findById(req.params.id, (err, foundSighting) => {
+    res.render('./sightings/show.ejs', {
+      sighting: foundSighting
+    })
+  })
 })
 
 // =======================

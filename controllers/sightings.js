@@ -107,13 +107,16 @@ router.post('/', upload.single('image'), (req,res) => {
     notes: req.body.notes
   };
 
-  res.send(req.file);
+  // res.send(req.file);
   image: req.file.path
   console.log(req.file);
   console.log(req.body);
   console.log(newSighting);// OR should this be req.body.image: req.file.path?
   // res.send(req.body);//
-  // Sighting.create
+  Sighting.create(newSighting, (err, createdSighting) => {
+    console.log(createdSighting);
+    res.redirect('/sightings');
+  })
 })
 
 // =======================

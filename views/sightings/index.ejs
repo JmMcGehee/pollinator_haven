@@ -16,7 +16,7 @@
         <% for (let i = 0; i < sightings.length; i++) { %>
           <div class="card">
           <a href="/sightings/<%= sightings[i].id %>"><h3><%= sightings[i].species %></h3></a>
-          <img src="#" alt="<%= sightings[i].image %>">
+          <img src="sightings[i].image" alt="<%= sightings[i].image %>">
           <h5><%= sightings[i].sightingTitle %></h5>
           Date: <br>
           Location <br>

@@ -22,7 +22,7 @@ router.use(express.static('public'));
 router.get('/', (req,res) => {
   Sighting.find({}, (error, allSightings) => {
     res.render('./sightings/index.ejs', {
-      sightings: allSightings
+      sightings: allSightings,
     })
   })
 })

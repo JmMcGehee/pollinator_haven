@@ -6,7 +6,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-
+const session = require('express-session');
 require('dotenv').config
 const app = express();
 
@@ -38,6 +38,11 @@ app.use('/public', express.static('public')); // I might have to change how phot
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: "don3tt7ouc1hm2y36sc52r2e23t",
+  resave: false,
+  saveUninitialized: false
+}))
 
 app.use('/users', userController);
 app.use('/sessions', sessionsController);
@@ -51,7 +56,9 @@ app.use('/sightings', sightingsController); //point the species route to the con
 // INDEX ROUTE
 // =======================
 app.get('/', (req,res) => {
-  res.render('index.ejs')
+  res.render('index.ejs', {
+    currentUser: req.session.currentUser
+  })
 })
 
 // =======================

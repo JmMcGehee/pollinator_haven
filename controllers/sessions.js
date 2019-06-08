@@ -20,4 +20,12 @@ sessions.post('/', (req, res)=>{
     });
 });
 
+////////// DELETE/END SESSION ROUTE
+
+sessions.delete('/', (req, res)=>{
+    req.session.destroy(() => {
+        res.redirect('/')
+    })
+})
+
 module.exports = sessions

@@ -5,9 +5,13 @@
 /// HOW DO I USE JQUERY AND BOOTSTRAP LOCALY???
 
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
+
+require('dotenv').config
+const app = express();
+
 const sightingsController = require('./controllers/sightings'); //require speciesController
+const methodOverride = require('method-override');
 
 /////// HEROKU PORT/////////
 const PORT = process.env.PORT || 3000;
@@ -29,6 +33,7 @@ app.use(express.static('public'));
 app.use('/public', express.static('public')); // I might have to change how photos are accessed.
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 app.use('/sightings', sightingsController); //point the species route to the controller
 
 //MAKE SURE TO REQUIRE JSON

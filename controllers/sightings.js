@@ -40,7 +40,12 @@ router.get('/new', (req,res) => {
 // =======================
 
 router.get('/:id/edit', (req,res) => {
-  res.send(`editing ${req.params.id}`)
+  // res.send(`editing ${req.params.id}`)
+  Sighting.findById(req.params.id, (err, foundSighting) => {
+    res.render('./sightings/edit.ejs', {
+      sighting: foundSighting
+    })
+  })
 })
 
 // =======================
@@ -58,10 +63,66 @@ router.get('/:id', (req,res) => {
 // =======================
 // 5.POST/CREATE ROUTE req.body
 // =======================
+//
+// router.post('/', (req,res) => {
+//   // res.send(req.body)
+//   let newSighting = {
+//     sightingTitle: req.body.sightingTitle,
+//     species: req.body.species,
+//     image: req.body.image,
+//     location: {
+//       latitude: req.body.latitude,
+//       longitude: req.body.longitude,
+//     },
+//     season: {
+//       startDate: req.body.startDate,
+//       endDate: req.body.endDate
+//     },
+//     notes: req.body.notes
+//   };
+//   // console.log(newSighting);
+//   Sighting.create(newSighting, (err, createdSighting) => {
+//     console.log(createdSighting);
+//     res.redirect('/sightings');
+//   })
+// })
 
-router.post('/', (req,res) => {
-  // res.send(req.body)
+// =======================
+// 5.1 POST/CREATE ROUTE req.file
+// =======================
+
+router.post('/', upload.single('image'), (req,res) => {
   let newSighting = {
+    sightingTitle: req.body.sightingTitle,
+    species: req.body.species,
+    image: req.file.path,
+    location: {
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    },
+    season: {
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
+    },
+    notes: req.body.notes
+  };
+
+  res.send(req.file);
+  image: req.file.path
+  console.log(req.file);
+  console.log(req.body);
+  console.log(newSighting);// OR should this be req.body.image: req.file.path?
+  // res.send(req.body);//
+  // Sighting.create
+})
+
+// =======================
+// 6.UPDATE/PUT ROUTE
+// =======================
+
+router.put('/:id', (req,res) => {
+  // res.send(req.body);
+  let editedSighting = {
     sightingTitle: req.body.sightingTitle,
     species: req.body.species,
     image: req.body.image,
@@ -75,31 +136,10 @@ router.post('/', (req,res) => {
     },
     notes: req.body.notes
   };
-  // console.log(newSighting);
-  Sighting.create(newSighting, (err, createdSighting) => {
-    console.log(createdSighting);
-    res.redirect('/sightings');
+  Sighting.findByIdAndUpdate(req.params.id, editedSighting, {new:true}, (err, updatedSighting) => {
+    console.log(updatedSighting);
+    res.redirect('/sightings')
   })
-})
-
-// =======================
-// 5.1 POST/CREATE ROUTE req.file
-// =======================
-
-// router.post('/', upload.single('image'), (req,res) => {
-//   res.send(req.file);
-//   console.log(req.file);
-//   image: req.file.path // OR should this be req.body.image: req.file.path?
-//   res.send(req.body);//
-//   // Sighting.create
-// })
-
-// =======================
-// 6.UPDATE/PUT ROUTE
-// =======================
-
-router.put('/:id', (req,res) => {
-  res.send(req.body);
 })
 
 // =======================
@@ -107,7 +147,10 @@ router.put('/:id', (req,res) => {
 // =======================
 
 router.delete('/:id', (req,res) => {
-  res.send(`Deleting ${req.body}`)
+  // res.send(`Deleting ${req.body}`)
+  Sighting.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect('/sightings')
+  })
 })
 
 module.exports = router;

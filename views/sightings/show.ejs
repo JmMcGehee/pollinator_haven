@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Show View</title>
+    <% include ../../partials/head.ejs %>
   </head>
   <nav>
     <a href="/sightings">Back</a>
@@ -10,6 +11,18 @@
   </nav>
   <body>
     <h1><%= sighting.sightingTitle %></h1>
+    <div class="show-container">
+    <img src="/<%= sighting.image %>" alt="<%= sighting.image %>">
+    <div class="">
+      <h3><%= sighting.species %></h3>
+      <p>Date Sighted: <%= sighting.createdAt %></p> <br>
+      <h5>In season: <%= sighting.season.startDate %> to <%= sighting.season.endDate %></h5>
+      <p><span>Notes:</span></br>
+      <%= sighting.notes %>
+      </p><br>
+      <p>Location: (<%= sighting.location.latitude %>,<%= sighting.location.longitude %> )</p>
+    </div>
+    </div>
     <form class="" action="/sightings/<%= sighting.id; %>?_method=DELETE" method="POST">
       <input type="submit" value="DELETE">
     </form>

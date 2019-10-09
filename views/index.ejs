@@ -7,27 +7,32 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-    <h1>Pollinator Haven Home Page</h1>
-    <% if(currentUser) { %>
-  Welcome <%= currentUser.username %>
-  <a href="/sightings">Sightings Page</a>
-<% } else { %>
-  Welcome. Please sign in.
-<% } %>
-<nav>
-  <ul>
-    <% if(!currentUser) {%>
-    <li><a href="/sessions/new">Log In</a></li>
-    <li><a href="/users/new">Sign Up</a></li>
-    <% } %>
-    <% if(currentUser) { %>
-    <li>
-      <form action="/sessions?_method=DELETE" method="POST">
-        <input type="submit" value="Logout"/>
-      </form>
-    </li>
-    <% } %>
-  </ul>
-</nav>
+    <div class="container">
+      <div class="page-header">
+        <h1>Pollinator Haven Home Page</h1>
+      </div>
+      <div class="jumbotron">
+        <% if(currentUser) { %>
+          Welcome <%= currentUser.username %>
+          <a href="/sightings">Sightings Page</a>
+        <% } else { %>
+          Welcome. Please sign in.
+        <% } %>
+        <nav>
+            <% if(!currentUser) {%>
+            <a href="/sessions/new" class="btn btn-success btn-lg">Log In</a>
+            <a href="/users/new" class="btn btn-success btn-lg" role="button">Sign Up</a>
+            <% } %>
+            <% if(currentUser) { %>
+            <li>
+              <form action="/sessions?_method=DELETE" method="POST">
+                <input type="submit" value="Logout"/>
+              </form>
+            </li>
+            <% } %>
+        </nav>
+      </div>
+    </div>
+  <% include ../partials/scripts.ejs %>
   </body>
 </html>

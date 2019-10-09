@@ -85,3 +85,13 @@ const upload = multer({storage: storage});
 - The My Garden page is an index view of species.
 - The Home page is an index view of all gardens and species/sightings.
 - Species and sightings are created through the same model.
+
+### Nature Resources
+
+### Steps for improvement
+- Give users their own garden access.
+- Home page with common plants and pollinators that can be added to a user's garden.
+- STYLING and Mobile Optimization.
+- Location populates to location field.
+- Locations shown on map.
+- Connecting sightings. 
